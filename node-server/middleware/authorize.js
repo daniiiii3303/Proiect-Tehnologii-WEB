@@ -9,7 +9,7 @@ function authorize() {
     jwt({ secret, algorithms: ["HS256"] }),
 
     async (req, res, next) => {
-      const user = await UserDB.findByPk(req.user.sub)
+      UserDB.findByPk(req.user.sub)
         .then((user) => {
           if (!user) return res.status(401).json({ message: "Unauthorized" });
 
