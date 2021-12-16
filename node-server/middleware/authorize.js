@@ -11,7 +11,9 @@ function authorize() {
     async (req, res, next) => {
       UserDB.findByPk(req.user.sub)
         .then((user) => {
-          if (!user) return res.status(401).json({ message: "Unauthorized" });
+          if (!user) {
+            return res.status(401).json({ message: "Unauthorized" });
+          }
 
           req.user = user.get();
           next();

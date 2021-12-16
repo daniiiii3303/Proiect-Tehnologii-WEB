@@ -32,10 +32,9 @@ const controller = {
       })
       .then(async (user) => {
         if (!user || !(await bcrypt.compare(password, user.hash))) {
-          res
+          return res
             .status(400)
             .send({ message: "Username or password is incorrect" });
-          return;
         }
 
         const token = jwt.sign({ sub: user.id }, config.secret, {
@@ -46,7 +45,6 @@ const controller = {
       .catch((err) => {
         console.error(err);
         res.status(500).json({ message: "Server error" });
-        next();
       });
   },
 
@@ -70,10 +68,9 @@ const controller = {
     UserDB.findOne({ where: { username } })
       .then(async (user) => {
         if (user) {
-          res
+          return res
             .status(400)
             .send({ message: `Username ${username} is already taken` });
-          return;
         }
 
         let userToCreate = req.body;
@@ -88,13 +85,11 @@ const controller = {
           .catch((err) => {
             console.error(err);
             res.status(500).send({ message: "Server error!" });
-            next();
           });
       })
       .catch((err) => {
         console.error(err);
         res.status(500).send({ message: "Server error!" });
-        next();
       });
   },
 
@@ -106,7 +101,6 @@ const controller = {
       .catch((err) => {
         console.error(err);
         res.status(500).send({ message: "Server error!" });
-        next();
       });
   },
 
@@ -118,15 +112,13 @@ const controller = {
     UserDB.findByPk(req.params.id)
       .then((user) => {
         if (!user) {
-          res.status(404).send({ message: "User not found" });
-          return;
+          return res.status(404).send({ message: "User not found" });
         }
         res.status(200).send(user);
       })
       .catch((err) => {
         console.error(err);
         res.status(500).send({ message: "Server error!" });
-        next();
       });
   },
 
@@ -149,8 +141,7 @@ const controller = {
     UserDB.findByPk(req.params.id)
       .then(async (user) => {
         if (!user) {
-          res.status(404).send({ message: "User not found" });
-          return;
+          return res.status(404).send({ message: "User not found" });
         }
 
         const { username, password, hash } = req.body;
@@ -159,16 +150,14 @@ const controller = {
           UserDB.findOne({ where: { username } })
             .then((user) => {
               if (user) {
-                res
+                return res
                   .status(400)
                   .send({ message: `Username ${username} is already taken` });
-                return;
               }
             })
             .catch((err) => {
               console.error(err);
               res.status(500).send({ message: "Server error!" });
-              next();
             });
         }
 
@@ -184,7 +173,6 @@ const controller = {
       .catch((err) => {
         console.error(err);
         res.status(500).send({ message: "Server error!" });
-        next();
       });
   },
 
@@ -192,8 +180,7 @@ const controller = {
     UserDB.findByPk(req.params.id)
       .then(async (user) => {
         if (!user) {
-          res.status(404).send({ message: "User not found" });
-          return;
+          return res.status(404).send({ message: "User not found" });
         }
         await user.destroy();
         res.status(200).send({ message: "User deleted successfully" });
@@ -201,7 +188,6 @@ const controller = {
       .catch((err) => {
         console.error(err);
         res.status(500).send({ message: "Server error!" });
-        next();
       });
   },
 };
