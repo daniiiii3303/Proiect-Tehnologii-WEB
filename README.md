@@ -2,8 +2,8 @@
 Aplicație web pentru partajarea experiențelor utilizării mijloacelor de transport
 
 Modulul Utilizator
-- register & login pe baza unor campuri (securizat)
-- posibilitatea actualizarii datelor (e-mail, parola, adresa) sau a dezactivarii contului 
+- register & login pe baza unor campuri (securizat) ✅
+- posibilitatea actualizarii datelor (e-mail, parola, adresa) sau a dezactivarii contului ✅
 
 Modulul de Partajare
 - posibilitatea partajarii unei experiente prin intermediul unui form:
