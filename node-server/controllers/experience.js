@@ -16,7 +16,6 @@ const controller = {
     if (req.query.endPoint) {
       obj.where.endPoint = req.query.endPoint;
     }
-    console.log(obj);
 
     ExperienceDB.findAll(obj)
       .then((experiences) => {
