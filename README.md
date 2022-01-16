@@ -2,12 +2,12 @@
 
 Aplicație web pentru partajarea experiențelor utilizării mijloacelor de transport
 
-Modulul Utilizator
+Modulul Utilizator:
 
 - register & login pe baza unor campuri (securizat) ✅
 - posibilitatea actualizarii datelor (e-mail, parola, adresa) sau a dezactivarii contului ✅
 
-Modulul de Partajare
+Modulul de Partajare:
 
 - posibilitatea partajarii unei experiente prin intermediul unui form:
   • Punctul de plecare (A)
@@ -22,7 +22,7 @@ Modulul de Partajare
 - posibilitatea afisarii tuturor experientelor ale unui utilizator
 - posibilitatea stergerii unei experiente
 
-Modulul de Căutare
+Modulul de Căutare:
 
 - implementarea unui search-bar
 - posibilitatea afisarii rezultatelor sub forma de lista dupa cuvinte cheie
