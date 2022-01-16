@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ children }) => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const navigate = useNavigate();
+  const user = localStorage.getItem("user");
 
   const handleToggle = () => {
     toggleMenu ? setToggleMenu(false) : setToggleMenu(true);
@@ -15,11 +16,19 @@ const Navbar = ({ children }) => {
     navigate("/login");
   };
 
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  });
+
   return (
-    <div>
+    <div className="h-full">
       <header>
         <div className="px-4 py-2 text-white flex md:items-center justify-between bg-blue-900">
-          <h1 className="font-bold">ShareTrip</h1>
+          <h1 className="font-bold">
+            <a href="./">ShareTrip</a>
+          </h1>
           <div
             className={
               toggleMenu

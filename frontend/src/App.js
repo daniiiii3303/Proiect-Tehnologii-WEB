@@ -3,8 +3,9 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/login";
 import Register from "./pages/register";
-import Homepage from "./pages/homepage";
+import Homepage from "./components/homepage";
 import Navbar from "./components/navbar";
+import AddExperience from "./components/add-experiece";
 
 function App() {
   return (
@@ -17,7 +18,15 @@ function App() {
           path="/"
           element={
             <Navbar>
-              <Homepage />{" "}
+              <Homepage />
+            </Navbar>
+          }
+        />
+        <Route
+          path="/add-experience"
+          element={
+            <Navbar>
+              <AddExperience />
             </Navbar>
           }
         />

@@ -94,8 +94,7 @@ const Login = () => {
             <div
               className="w-full h-auto bg-gray-200 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
               style={{
-                backgroundImage:
-                  'url("https://www.mobiliteit.lu/wp-content/uploads/2020/01/Transports-publics_square-1024x1024.png")',
+                backgroundImage: `url(${require("../static/images/login.png")})`,
               }}
             ></div>
             <div className="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none ">

@@ -129,8 +129,7 @@ const Register = () => {
               <div
                 className="w-full h-auto bg-gray-200 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
                 style={{
-                  backgroundImage:
-                    'url("https://i.pinimg.com/originals/f5/45/df/f545dfe020ae9e23ba406f433b81379f.jpg")',
+                  backgroundImage: `url(${require("../static/images/register.jpg")})`,
                 }}
               ></div>
               <div className="w-full h-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none ">
