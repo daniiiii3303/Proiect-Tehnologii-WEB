@@ -24,8 +24,8 @@ Modulul de Partajare:
 
 Modulul de Căutare:
 
-- implementarea unui search-bar
-- posibilitatea afisarii rezultatelor sub forma de lista dupa cuvinte cheie
+- implementarea unui search-bar ✅
+- posibilitatea afisarii rezultatelor sub forma de lista dupa cuvinte cheie ✅
 - posibilitatea cautarii experientelor în funcție de locație, mijlocul de transport folosit sau destinație
 
 Tehnologii utilizate:
