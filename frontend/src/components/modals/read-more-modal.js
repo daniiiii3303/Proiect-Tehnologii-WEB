@@ -4,10 +4,10 @@ const ReadMoreModal = (props) => {
   return (
     <>
       {showModal ? (
-        <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
-              <div className=" border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white opacity-95 outline-none focus:outline-none">
+        <div>
+          <div className="justify-center  items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+            <div className="relative read-more my-6 mx-auto max-w-3xl">
+              <div className=" border-0 rounded-lg shadow-lg relative flex flex-col read-more bg-white opacity-95 outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                   <div className="flex items-center">
                     <div className="py-1">
@@ -33,14 +33,14 @@ const ReadMoreModal = (props) => {
                   </button>
                 </div>
                 <div className="relative p-6 flex-auto">
-                  <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
+                  <div className="my-4 text-blueGray-500 text-lg leading-relaxed">
                     <div className="text-center">
                       <p className="text-xl text-gray-700 font-bold mb-2">
                         {experience.author}
                       </p>
                       <div className="flex justify-center items-center">
                         <svg
-                          class="h-4 w-4 text-gray-400 mr-1"
+                          className="h-4 w-4 text-gray-400 mr-1"
                           width="24"
                           height="24"
                           viewBox="0 0 24 24"
@@ -60,7 +60,7 @@ const ReadMoreModal = (props) => {
                       </div>
                       <div className="flex justify-center items-center">
                         <svg
-                          class="h-4 w-4 text-gray-400 mr-1"
+                          className="h-4 w-4 text-gray-400 mr-1"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -85,7 +85,7 @@ const ReadMoreModal = (props) => {
                       </div>
                       <div className="flex justify-center items-center">
                         <svg
-                          class="h-4 w-4 text-gray-400 mr-1"
+                          className="h-4 w-4 text-gray-400 mr-1"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
@@ -103,7 +103,7 @@ const ReadMoreModal = (props) => {
                       </div>
                       <div className="flex justify-center items-center">
                         <svg
-                          class="h-4 w-4 text-gray-400 mr-1"
+                          className="h-4 w-4 text-gray-400 mr-1"
                           width="24"
                           height="24"
                           viewBox="0 0 24 24"
@@ -127,7 +127,7 @@ const ReadMoreModal = (props) => {
                       </div>
                       <div className="flex justify-center items-center">
                         <svg
-                          class="h-4 w-4 text-gray-400 mr-1"
+                          className="h-4 w-4 text-gray-400 mr-1"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -145,7 +145,7 @@ const ReadMoreModal = (props) => {
                       </div>
                       <div className="flex justify-center items-center">
                         <svg
-                          class="h-4 w-4 text-gray-400 mr-1"
+                          className="h-4 w-4 text-gray-400 mr-1"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
@@ -162,7 +162,7 @@ const ReadMoreModal = (props) => {
                       </div>
                       <div className="flex justify-center items-center">
                         <svg
-                          class="h-4 w-4 text-gray-400 mr-1"
+                          className="h-4 w-4 text-gray-400 mr-1"
                           width="24"
                           height="24"
                           viewBox="0 0 24 24"
@@ -188,7 +188,7 @@ const ReadMoreModal = (props) => {
                       </div>
                       <div className="flex justify-center items-center">
                         <svg
-                          class="h-4 w-4 text-gray-400 mr-1"
+                          className="h-4 w-4 text-gray-400 mr-1"
                           width="24"
                           height="24"
                           viewBox="0 0 24 24"
@@ -212,7 +212,7 @@ const ReadMoreModal = (props) => {
                         {experience.observations}
                       </p>
                     </div>
-                  </p>
+                  </div>
                 </div>
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                   <button
@@ -227,7 +227,7 @@ const ReadMoreModal = (props) => {
             </div>
           </div>
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-        </>
+        </div>
       ) : null}
     </>
   );

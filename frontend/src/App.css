@@ -17,6 +17,22 @@ html {
   font-weight: bold;
 }
 
+.read-more {
+  width: 100%;
+}
+
+.loading {
+  margin-top: 50vh;
+}
+
+.form-button {
+  width: 10rem;
+}
+
+.no-content {
+  margin-bottom: 65vh;
+}
+
 #menu-toggle:checked + #menu {
   display: block;
 }

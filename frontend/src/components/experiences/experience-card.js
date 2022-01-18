@@ -1,25 +1,77 @@
 import { useState } from "react";
-import ReadMoreModal from "./read-more-modal";
+import DeleteButton from "./delete-button";
+import DeleteModal from "../modals/delete-modal";
+import EditButton from "./edit-button";
+import ReadMoreButton from "./read-more-button";
+import ReadMoreModal from "../modals/read-more-modal";
+import { useNavigate } from "react-router-dom";
 
 const truncate = (str) => {
-  return str.length > 50 ? str.substring(0, 50) + "..." : str;
+  return str.length > 40 ? str.substring(0, 40) + "..." : str;
 };
 
 const ExperienceCard = (props) => {
-  const [showModal, setShowModal] = useState(false);
-  const { experience } = props;
+  const [showReadMoreModal, setShowReadMoreModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const { experience, isMyExperiencePage, getMyExperiences, setErrorFetch } =
+    props;
+  const user = localStorage.getItem("user");
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
-  const handleClick = () => {
-    setShowModal(true);
+  const handleClickReadMore = () => {
+    setShowReadMoreModal(true);
+  };
+
+  const DeleteExperience = async () => {
+    await fetch(
+      `http://localhost:8080/api/users/${JSON.parse(user).id}/experiences/${
+        experience.id
+      }`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: token,
+        },
+      }
+    )
+      .then((response) => {
+        if (!response.ok) {
+          return response.json().then((json) => {
+            throw new Error(json.message);
+          });
+        } else {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        getMyExperiences();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setErrorFetch(true);
+      });
+  };
+
+  const handleClickDelete = () => {
+    DeleteExperience();
+    setShowDeleteModal(false);
+  };
+
+  const handleClickEdit = () => {
+    navigate(`/my-experiences/${experience.id}`);
   };
 
   return (
-    <div className="w-full bg-white rounded-lg p-12 flex flex-col justify-center items-center">
+    <div
+      id={experience.author}
+      className="w-full  experience-card bg-white rounded-lg p-12 flex flex-col justify-center items-center"
+    >
       <div className="text-center">
-        <p className="text-xl text-gray-700 font-bold mb-2">
+        <p className="text-xl text-gray-700 font-bold mb-4">
           {experience.author}
         </p>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center mb-1">
           <svg
             className="h-4 w-4 text-gray-400 mr-1"
             width="24"
@@ -39,7 +91,7 @@ const ExperienceCard = (props) => {
             From: {experience.startPoint}
           </p>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center mb-1">
           <svg
             className="h-4 w-4 text-gray-400 mr-1"
             fill="none"
@@ -64,7 +116,7 @@ const ExperienceCard = (props) => {
             To: {experience.endPoint}
           </p>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center mb-1">
           <svg
             className="h-4 w-4 text-gray-400 mr-1"
             viewBox="0 0 24 24"
@@ -82,7 +134,7 @@ const ExperienceCard = (props) => {
             Departure hour: {experience.departureHour}
           </p>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center mb-1">
           <svg
             className="h-4 w-4 text-gray-400 mr-1"
             width="24"
@@ -106,7 +158,7 @@ const ExperienceCard = (props) => {
             Duration: {experience.duration}
           </p>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center mb-1">
           <svg
             className="h-4 w-4 text-gray-400 mr-1"
             fill="none"
@@ -124,7 +176,7 @@ const ExperienceCard = (props) => {
             Agglomeration: {experience.agglomeration}
           </p>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center mb-1">
           <svg
             className="h-4 w-4 text-gray-400 mr-1"
             viewBox="0 0 24 24"
@@ -141,7 +193,7 @@ const ExperienceCard = (props) => {
             Satisfaction level: {experience.satisfactionLevel}
           </p>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center mb-1">
           <svg
             className="h-4 w-4 text-gray-400 mr-1"
             width="24"
@@ -166,7 +218,7 @@ const ExperienceCard = (props) => {
             Vehicle type: {experience.vehicleType}
           </p>
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center mb-1">
           <svg
             className="h-4 w-4 text-gray-400 mr-1"
             width="24"
@@ -186,33 +238,27 @@ const ExperienceCard = (props) => {
           </svg>
           <p className="text-base text-gray-400 font-normal">Observations:</p>
         </div>
-        <p className="text-base break-all text-gray-400 font-normal">
+        <p className="text-base break-all text-gray-400 font-normal mb-1">
           {truncate(experience.observations)}
         </p>
 
-        <button
-          onClick={handleClick}
-          className="text-white mt-5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Read more
-          <svg
-            className="-mr-1 ml-2 h-4 w-4"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
-        </button>
+        <ReadMoreButton handleClick={handleClickReadMore} />
       </div>
+      {isMyExperiencePage && (
+        <div className="flex justify-center items-center space-x-4">
+          <EditButton handleClick={handleClickEdit} />
+          <DeleteButton setShowModal={setShowDeleteModal} />
+        </div>
+      )}
       <ReadMoreModal
-        showModal={showModal}
-        setShowModal={setShowModal}
+        showModal={showReadMoreModal}
+        setShowModal={setShowReadMoreModal}
         experience={experience}
+      />
+      <DeleteModal
+        handleClick={handleClickDelete}
+        showModal={showDeleteModal}
+        setShowModal={setShowDeleteModal}
       />
     </div>
   );

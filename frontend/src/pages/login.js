@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
-import AlertModal from "../components/alert-modal";
+import AlertModal from "../components/modals/alert-modal";
 import { useNavigate } from "react-router-dom";
 
 const validateUser = (values) => {
@@ -162,7 +162,7 @@ const Login = () => {
                 <div className="text-center">
                   <a
                     className="inline-block text-sm text-blue-600 align-baseline hover:text-blue-800"
-                    href="./register"
+                    href="/register"
                   >
                     Create an account!
                   </a>

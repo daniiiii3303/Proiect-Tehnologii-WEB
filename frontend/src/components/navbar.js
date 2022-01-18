@@ -27,7 +27,7 @@ const Navbar = ({ children }) => {
       <header>
         <div className="px-4 py-2 text-white flex md:items-center justify-between bg-blue-900">
           <h1 className="font-bold">
-            <a href="./">ShareTrip</a>
+            <a href="/">ShareTrip</a>
           </h1>
           <div
             className={
@@ -39,13 +39,13 @@ const Navbar = ({ children }) => {
           >
             <ul>
               <li className="md:inline-block cursor-pointer hover:text-gray-800 border-b md:border-none py-2 px-3">
-                <a href="./">Home</a>
+                <a href="/">Home</a>
               </li>
               <li className="dropdown md:inline-block cursor-pointer hover:text-gray-800 border-b md:border-none py-2 px-3 relative">
-                <a href="./my-experiences">My experiences</a>
+                <a href="/my-experiences">My experiences</a>
               </li>
               <li className="dropdown md:inline-block cursor-pointer hover:text-gray-800 border-b md:border-none py-2 px-3 relative">
-                <a href="./profile">Profile</a>
+                <a href="/profile">Profile</a>
               </li>
               <li className="md:inline-block cursor-pointer text-red-500 hover:text-red-700 border-b md:border-none py-2 px-3">
                 <button onClick={handleClickLogout}>Logout</button>

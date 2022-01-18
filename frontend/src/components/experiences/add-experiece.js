@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AddSuccess from "./add-success";
-import AlertModal from "./alert-modal";
+import AlertModal from "../modals/alert-modal";
 
 const validateExperience = (values) => {
   const errors = {};

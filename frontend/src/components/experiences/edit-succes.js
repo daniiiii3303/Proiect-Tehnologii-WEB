@@ -1,8 +1,7 @@
-const RegisterSuccess = (props) => {
-  const { message } = props;
-
+const EditSuccess = (props) => {
+  const { fromProfile } = props;
   return (
-    <div className="bg-white p-6  md:mx-auto">
+    <div className=" bg-white p-6 w-4/6 md:mx-auto">
       <svg
         viewBox="0 0 24 24"
         className="text-green-600 w-16 h-16 mx-auto my-6"
@@ -14,18 +13,15 @@ const RegisterSuccess = (props) => {
       </svg>
       <div className="text-center">
         <h3 className="md:text-2xl text-base text-gray-900 font-semibold text-center">
-          {message}
+          Succes!
         </h3>
-        <p className="text-gray-600 my-2">
-          Thank you for completing your registration.
-        </p>
-        <p> Do you want to Sign In? </p>
+        <p className="text-gray-600 my-2">Updated successfully.</p>
         <div className="py-10 text-center">
           <a
-            href="/login"
+            href={fromProfile ? "/profile" : "/my-experiences"}
             className="px-12 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3"
           >
-            Sign In
+            Back to {fromProfile ? "Profile" : "MyExperiences"}
           </a>
         </div>
       </div>
@@ -33,4 +29,4 @@ const RegisterSuccess = (props) => {
   );
 };
 
-export default RegisterSuccess;
+export default EditSuccess;
