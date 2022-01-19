@@ -5,12 +5,16 @@ import Error from "../error";
 import ExperienceCard from "./experience-card";
 import Loading from "../loading";
 import SearchBar from "./search-bar";
+import FilterButton from "./filter-button";
+import FilterModal from "../modals/filter-modal";
+import DeleteFilter from "./delete-filter";
 
 const Experiences = (props) => {
   const { isMyExperiencePage } = props;
   const [loading, setLoading] = useState(true);
   const [errorFetch, setErrorFetch] = useState(false);
   const [experiences, setExperiences] = useState([]);
+  const [showFilterModal, setShowFilterModal] = useState(false);
   const navigate = useNavigate();
   const user = localStorage.getItem("user");
   const token = localStorage.getItem("token");
@@ -96,8 +100,24 @@ const Experiences = (props) => {
           ) : (
             <div className="min-h-full grid justify-items-center font-mono bg-gray-100">
               <div className="w-4/5 mt-10">
-                <div className={isMyExperiencePage ? "mb-5 invisible" : "mb-5"}>
+                <div
+                  className={
+                    isMyExperiencePage
+                      ? "mb-5 flex items-center space-x-4 invisible"
+                      : "mb-5 flex items-center space-x-4"
+                  }
+                >
                   <SearchBar experiences={experiences} />
+                </div>
+                <div className="flex space-x-3 mb-3">
+                  <FilterButton
+                    isMyExperiencePage={isMyExperiencePage}
+                    setShowModal={setShowFilterModal}
+                  />
+                  <DeleteFilter
+                    isMyExperiencePage={isMyExperiencePage}
+                    getExperiences={getExperiences}
+                  />
                 </div>
                 <AddExperienceButton isMyExperiencePage={isMyExperiencePage} />
                 {experiences.length > 0 ? (
@@ -117,6 +137,12 @@ const Experiences = (props) => {
                   </div>
                 )}
               </div>
+              <FilterModal
+                setExperiences={setExperiences}
+                showModal={showFilterModal}
+                setShowModal={setShowFilterModal}
+                experiences={experiences}
+              />
             </div>
           )}
         </div>

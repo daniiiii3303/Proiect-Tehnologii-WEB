@@ -18,8 +18,6 @@ const SearchBar = (props) => {
     const experienceCards = document.getElementsByClassName("experience-card");
     if (experienceCards.length > 0 && experienceCards) {
       for (const e of experienceCards) {
-        console.log(e.id);
-        console.log(inputValue);
         if (
           !e.id.toLocaleLowerCase().includes(inputValue.toLocaleLowerCase())
         ) {
@@ -45,7 +43,7 @@ const SearchBar = (props) => {
   return (
     <div>
       <Autocomplete
-        style={{ width: 400 }}
+        style={{ width: "35vh" }}
         freeSolo
         autoComplete
         autoHighlight
