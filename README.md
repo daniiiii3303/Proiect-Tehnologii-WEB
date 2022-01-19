@@ -17,18 +17,18 @@ Modulul de Partajare:
   • Durata călătoriei
   • Gradul de aglomerare al mijlocului de transport
   • Observații
-  • Nivelul de satisfacție (smiley faces)
-- posibilitatea modificarii unei experiente a unui utilizator
-- posibilitatea afisarii tuturor experientelor ale unui utilizator
-- posibilitatea stergerii unei experiente
+  • Nivelul de satisfacție (smiley faces) ✅
+- posibilitatea modificarii unei experiente a unui utilizator ✅
+- posibilitatea afisarii tuturor experientelor ale unui utilizator ✅
+- posibilitatea stergerii unei experiente ✅
 
 Modulul de Căutare:
 
 - implementarea unui search-bar ✅
 - posibilitatea afisarii rezultatelor sub forma de lista dupa cuvinte cheie ✅
-- posibilitatea cautarii experientelor în funcție de locație, mijlocul de transport folosit sau destinație
+- posibilitatea cautarii experientelor în funcție de locație, mijlocul de transport folosit sau destinație ✅
 
 Tehnologii utilizate:
 
 - backend: node.js
-- frontend: react
+- frontend: react, tailwind css
